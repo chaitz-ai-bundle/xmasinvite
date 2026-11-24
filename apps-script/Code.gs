@@ -1,4 +1,10 @@
 /**
+ * @OnlyCurrentDoc
+ * Limits this script to the one spreadsheet it is attached to.
+ * It cannot see, create or delete any of your other files.
+ */
+
+/**
  * RSVP backend for the Pre-Christmas Party invite.
  * Stores replies in the Google Sheet this script is attached to.
  * Setup steps: see README.md in the repository.
