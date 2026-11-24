@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-Christmas Party 🎄</title>
+<meta name="description" content="You're invited! Pre-Christmas party on Saturday 5th December from 5 pm. Wear a Christmas jumper or something red. Please RSVP.">
+<meta property="og:title" content="🎄 You're invited to our Pre-Christmas Party!">
+<meta property="og:description" content="Saturday 5th December · from 5 pm · Christmas jumpers or red! Please RSVP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d62839;
+    --red-dark: #9e1b2a;
+    --green: #1f7a4d;
+    --green-dark: #0f4d2f;
+    --gold: #f4c542;
+    --cream: #fff8ec;
+    --ink: #2b1d1d;
+    --night: #0b1d33;
+  }
+  * { box-sizing: border-box; }
+  html { background: #050d18; }
+  html, body { margin: 0; }
+  body {
+    font-family: "Poppins", system-ui, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(ellipse at top, #16365c 0%, var(--night) 55%, #050d18 100%) no-repeat;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Snow ---------- */
+  #snow { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+  /* ---------- Fairy lights ---------- */
+  .lights {
+    position: relative; z-index: 2;
+    display: flex; justify-content: space-around;
+    padding: 0 8px; margin: 0;
+    list-style: none; height: 48px; overflow: hidden;
+  }
+  .lights::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 6px;
+    border-top: 2px solid #2a3b2a;
+    border-radius: 50%;
+  }
+  .lights li {
+    position: relative; top: 12px;
+    width: 12px; height: 22px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 4px 18px 3px var(--gold);
+    animation: glow-gold 1.4s infinite alternate;
+  }
+  .lights li::before {
+    content: ""; position: absolute; top: -6px; left: 2px;
+    width: 8px; height: 7px; background: #333; border-radius: 2px;
+  }
+  .lights li:nth-child(3n+1) { background: var(--red); box-shadow: 0 4px 18px 3px var(--red); animation-name: glow-red; animation-duration: 1.1s; }
+  .lights li:nth-child(3n+2) { background: #3ddc84; box-shadow: 0 4px 18px 3px #3ddc84; animation-name: glow-green; animation-duration: 1.7s; }
+  @keyframes glow-gold  { to { background: #7a6420; box-shadow: none; } }
+  @keyframes glow-red   { to { background: #5c1119; box-shadow: none; } }
+  @keyframes glow-green { to { background: #175c37; box-shadow: none; } }
+
+  /* ---------- Layout ---------- */
+  main {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto;
+    padding: 16px 16px 64px;
+  }
+
+  .hero { text-align: center; color: #fff; padding: 24px 0 8px; }
+  .hero .tree {
+    font-size: 72px; line-height: 1;
+    display: inline-block;
+    animation: wiggle 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(244,197,66,.55));
+  }
+  @keyframes wiggle { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  .hero .eyebrow {
+    margin: 12px 0 0; letter-spacing: .3em; text-transform: uppercase;
+    font-size: 14px; font-weight: 600; color: var(--gold);
+  }
+  .hero h1 {
+    font-family: "Mountains of Christmas", cursive;
+    font-size: clamp(44px, 11vw, 88px);
+    line-height: 1.02; margin: 8px 0 4px;
+    color: #fff;
+    text-shadow: 0 0 2px #fff, 0 0 18px rgba(255,255,255,.35), 4px 4px 0 var(--red-dark);
+  }
+  .hero h1 span { color: var(--red); text-shadow: 0 0 2px #fff, 0 0 18px rgba(214,40,57,.6), 4px 4px 0 #3a0a10; }
+  .hero p.sub { font-size: 18px; margin: 8px 0 0; color: #d9e6f5; }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--cream);
+    border-radius: 22px;
+    padding: 28px 24px;
+    margin-top: 28px;
+    position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,.45);
+    border: 6px solid transparent;
+    background-image:
+      linear-gradient(var(--cream), var(--cream)),
+      repeating-linear-gradient(45deg, var(--red) 0 14px, #fff 14px 28px);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .card h2 {
+    font-family: "Mountains of Christmas", cursive;
+    font-size: 40px; margin: 0 0 12px; color: var(--green-dark); text-align: center;
+  }
+
+  .details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .detail {
+    text-align: center; padding: 18px 10px; border-radius: 16px;
+    background: #fff; border: 2px dashed #e8d6b8;
+  }
+  .detail .icon { font-size: 36px; }
+  .detail .label { font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); margin-top: 6px; }
+  .detail .value { font-size: 20px; font-weight: 800; color: var(--red-dark); margin-top: 2px; }
+  .detail .hint { font-size: 13px; color: #6b5a50; margin-top: 2px; }
+
+  .dresscode {
+    margin-top: 18px; padding: 18px; border-radius: 16px; text-align: center;
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+    color: #fff;
+  }
+  .dresscode .label { font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .dresscode .value { font-size: 22px; font-weight: 800; margin-top: 4px; }
+  .dresscode .value em { font-style: normal; color: var(--gold); }
+  .dresscode .emoji { font-size: 34px; margin-top: 6px; letter-spacing: 6px; }
+
+  /* ---------- Countdown ---------- */
+  .countdown { display: flex; justify-content: center; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+  .countdown div {
+    min-width: 64px; padding: 10px 8px; border-radius: 14px; text-align: center;
+    background: var(--green); color: #fff; box-shadow: inset 0 -4px 0 var(--green-dark);
+  }
+  .countdown b { display: block; font-size: 28px; font-weight: 800; }
+  .countdown small { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; opacity: .85; }
+  .countdown-done { text-align: center; font-weight: 800; color: var(--red); font-size: 20px; margin-top: 18px; }
+
+  /* ---------- RSVP ---------- */
+  .rsvp-intro { text-align: center; margin: 0 0 18px; color: #5a4a42; }
+  label.field { display: block; font-weight: 600; margin-bottom: 6px; color: var(--green-dark); }
+  input[type=text], textarea {
+    width: 100%; font: inherit; padding: 12px 14px; border-radius: 12px;
+    border: 2px solid #e2cfae; background: #fff; color: var(--ink);
+  }
+  input[type=text]:focus, textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(31,122,77,.2); }
+  textarea { min-height: 70px; resize: vertical; }
+
+  .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+  .choice input { position: absolute; opacity: 0; pointer-events: none; }
+  .choice input + span {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    padding: 16px 8px; min-height: 108px; border-radius: 16px; cursor: pointer; text-align: center;
+    background: #fff; border: 3px solid #e8d6b8; font-weight: 800; font-size: 18px;
+    transition: transform .15s, border-color .15s, background .15s;
+  }
+  .choice input + span i { font-style: normal; font-size: 34px; }
+  .choice input + span small { font-weight: 400; font-size: 12px; color: #6b5a50; line-height: 1.3; }
+  .choice .txt { display: flex; flex-direction: column; align-items: inherit; }
+  .choice input + span:hover { transform: translateY(-3px) rotate(-1deg); }
+  .choice input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .choice.yes   input:checked + span { background: #e3f6ea; border-color: var(--green); color: var(--green-dark); }
+  .choice.no    input:checked + span { background: #fde6e8; border-color: var(--red); color: var(--red-dark); }
+  .choice.maybe input:checked + span { background: #fff4d1; border-color: var(--gold); color: #7a5a00; }
+
+  .maybe-note {
+    display: none; margin: -4px 0 16px; padding: 12px 14px; border-radius: 12px;
+    background: #fff4d1; border-left: 5px solid var(--gold); font-size: 15px;
+  }
+  .maybe-note.show { display: block; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px; margin-top: 16px; border: 0; border-radius: 999px; cursor: pointer;
+    font: inherit; font-weight: 800; font-size: 18px; color: #fff; text-decoration: none;
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+    box-shadow: 0 6px 0 #6a1019, 0 10px 20px rgba(0,0,0,.25);
+    transition: transform .1s, box-shadow .1s;
+  }
+  .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #6a1019; }
+  .btn.secondary { background: var(--green); box-shadow: 0 6px 0 var(--green-dark), 0 10px 20px rgba(0,0,0,.2); }
+  .btn.secondary:active { box-shadow: 0 2px 0 var(--green-dark); }
+  .error { color: var(--red); font-weight: 600; margin-top: 10px; min-height: 1.2em; text-align: center; }
+
+  .thanks { display: none; text-align: center; }
+  .thanks.show { display: block; }
+  .thanks .big { font-size: 64px; }
+  .thanks h3 { font-family: "Mountains of Christmas", cursive; font-size: 38px; margin: 6px 0; color: var(--green-dark); }
+  .thanks .msg { background: #fff; border: 2px dashed #e2cfae; border-radius: 12px; padding: 12px; margin: 14px 0 0; white-space: pre-wrap; text-align: left; font-size: 14px; }
+  .link-btn { background: none; border: 0; color: var(--green); font: inherit; text-decoration: underline; cursor: pointer; margin-top: 14px; }
+
+  footer { text-align: center; color: #9fb3cc; margin-top: 36px; font-size: 14px; }
+
+  @media (max-width: 560px) {
+    .details { grid-template-columns: 1fr; }
+    .choices { grid-template-columns: 1fr; }
+    .choice input + span { min-height: 0; flex-direction: row; gap: 10px; justify-content: flex-start; padding: 14px 16px; text-align: left; }
+    .choice input + span i { font-size: 28px; }
+    .choice .txt { align-items: flex-start; }
+    .card { padding: 22px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<ul class="lights" aria-hidden="true">
+  <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+</ul>
+
+<main>
+  <header class="hero">
+    <div class="tree" aria-hidden="true">🎄</div>
+    <p class="eyebrow">You're invited to our</p>
+    <h1>Pre-<span>Christmas</span><br>Party!</h1>
+    <p class="sub">Mince pies, merry music &amp; lots of festive cheer 🎅✨</p>
+  </header>
+
+  <section class="card" aria-labelledby="details-h">
+    <h2 id="details-h">The Details</h2>
+    <div class="details">
+      <div class="detail">
+        <div class="icon" aria-hidden="true">📅</div>
+        <div class="label">Date</div>
+        <div class="value">Sat 5th Dec</div>
+        <div class="hint">Saturday, 5 December</div>
+      </div>
+      <div class="detail">
+        <div class="icon" aria-hidden="true">🕔</div>
+        <div class="label">Time</div>
+        <div class="value">From 5 pm</div>
+        <div class="hint">Till the elves get tired</div>
+      </div>
+      <div class="detail">
+        <div class="icon" aria-hidden="true">✉️</div>
+        <div class="label">RSVP</div>
+        <div class="value">Please reply</div>
+        <div class="hint">Maybes: confirm by Sat 28th Nov</div>
+      </div>
+    </div>
+
+    <div class="dresscode">
+      <div class="label">Dress code</div>
+      <div class="value">Wear a <em>Christmas jumper</em> or wear <em>RED</em>!</div>
+      <div class="emoji" aria-hidden="true">🧶❤️🎅</div>
+    </div>
+
+    <div class="countdown" id="countdown" aria-live="off">
+      <div><b id="cd-d">--</b><small>Days</small></div>
+      <div><b id="cd-h">--</b><small>Hours</small></div>
+      <div><b id="cd-m">--</b><small>Mins</small></div>
+      <div><b id="cd-s">--</b><small>Secs</small></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="rsvp-h">
+    <h2 id="rsvp-h">Please RSVP 🎁</h2>
+
+    <form id="rsvp" novalidate>
+      <p class="rsvp-intro">Let us know if you can make it so Santa can check his list!</p>
+
+      <label class="field" for="name">Your name(s)</label>
+      <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Rudolph &amp; Clarice" required>
+
+      <div class="choices" role="radiogroup" aria-label="Will you be coming?">
+        <label class="choice yes">
+          <input type="radio" name="answer" value="Yes">
+          <span><i aria-hidden="true">🎉</i><span class="txt">Yes!<small>Count me in</small></span></span>
+        </label>
+        <label class="choice no">
+          <input type="radio" name="answer" value="No">
+          <span><i aria-hidden="true">😢</i><span class="txt">No<small>Sadly can't make it</small></span></span>
+        </label>
+        <label class="choice maybe">
+          <input type="radio" name="answer" value="Maybe">
+          <span><i aria-hidden="true">🤔</i><span class="txt">Maybe<small>Can confirm by Sat 28th Nov</small></span></span>
+        </label>
+      </div>
+
+      <div class="maybe-note" id="maybe-note">
+        ⏰ No problem! Please confirm a final <b>yes</b> or <b>no</b> by <b>Saturday 28th November</b>.
+      </div>
+
+      <label class="field" for="note">Message for the hosts <span style="font-weight:400;color:#6b5a50">(optional)</span></label>
+      <textarea id="note" name="note" placeholder="Bringing a plus one? Dietary needs? Song requests?"></textarea>
+
+      <button type="submit" class="btn">Send my RSVP 🎅</button>
+      <div class="error" id="error" role="alert"></div>
+    </form>
+
+    <div class="thanks" id="thanks" aria-live="polite">
+      <div class="big" id="thanks-emoji">🎉</div>
+      <h3 id="thanks-title">Ho ho ho, thank you!</h3>
+      <p id="thanks-text"></p>
+      <div class="msg" id="thanks-msg"></div>
+      <a class="btn secondary" id="send-wa" target="_blank" rel="noopener">Send via WhatsApp 💬</a>
+      <a class="btn" id="send-email">Send via Email ✉️</a>
+      <button type="button" class="btn secondary" id="copy-btn">Copy message 📋</button>
+      <br>
+      <button type="button" class="link-btn" id="change">Change my answer</button>
+    </div>
+  </section>
+
+  <footer>Made with ❤️ and a sprinkle of snow ❄️</footer>
+</main>
+
+<script>
+/* ===== Settings for the hosts =====
+   Fill these in so RSVPs come straight to you:
+   - WHATSAPP_NUMBER: international format, digits only (e.g. "447700900123"). Leave "" to let guests pick a contact.
+   - RSVP_EMAIL: e.g. "party@example.com". Leave "" to hide the email button. */
+const WHATSAPP_NUMBER = "";
+const RSVP_EMAIL = "";
+
+const PARTY = new Date(2026, 11, 5, 17, 0, 0); // 5 Dec, 5pm local time
+
+/* ===== Countdown ===== */
+(function countdown() {
+  const el = id => document.getElementById(id);
+  const box = el("countdown");
+  function tick() {
+    let diff = PARTY - new Date();
+    if (diff <= 0) {
+      box.outerHTML = '<p class="countdown-done">🎉 It\'s party time! 🎉</p>';
+      return;
+    }
+    const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+    const h = Math.floor(diff / 36e5);  diff -= h * 36e5;
+    const m = Math.floor(diff / 6e4);   diff -= m * 6e4;
+    const s = Math.floor(diff / 1e3);
+    el("cd-d").textContent = d;
+    el("cd-h").textContent = String(h).padStart(2, "0");
+    el("cd-m").textContent = String(m).padStart(2, "0");
+    el("cd-s").textContent = String(s).padStart(2, "0");
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+
+/* ===== Snow ===== */
+(function snow() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = document.getElementById("snow");
+  const ctx = c.getContext("2d");
+  let W, H, flakes;
+  function resize() {
+    W = c.width = innerWidth; H = c.height = innerHeight;
+    const n = Math.min(160, Math.round(W * H / 9000));
+    flakes = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 2.6 + 0.8, s: Math.random() * 0.8 + 0.4,
+      w: Math.random() * Math.PI * 2
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = "rgba(255,255,255,0.85)";
+    ctx.beginPath();
+    for (const f of flakes) {
+      f.y += f.s; f.w += 0.01; f.x += Math.sin(f.w) * 0.4;
+      if (f.y > H + 5) { f.y = -5; f.x = Math.random() * W; }
+      ctx.moveTo(f.x, f.y); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+    }
+    ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  addEventListener("resize", resize);
+  resize(); draw();
+})();
+
+/* ===== RSVP ===== */
+(function rsvp() {
+  const form = document.getElementById("rsvp");
+  const thanks = document.getElementById("thanks");
+  const maybeNote = document.getElementById("maybe-note");
+  const err = document.getElementById("error");
+  const $ = id => document.getElementById(id);
+  const KEY = "xmas-rsvp-2026";
+
+  form.addEventListener("change", e => {
+    if (e.target.name === "answer") {
+      maybeNote.classList.toggle("show", e.target.value === "Maybe");
+      err.textContent = "";
+    }
+  });
+
+  function buildMessage(d) {
+    const lines = {
+      Yes: "🎉 YES! I'll be at the Pre-Christmas Party on Sat 5th Dec from 5pm!",
+      No: "😢 Sorry, I can't make the Pre-Christmas Party on Sat 5th Dec.",
+      Maybe: "🤔 MAYBE for the Pre-Christmas Party on Sat 5th Dec – I'll confirm by Sat 28th Nov."
+    };
+    let msg = `RSVP from ${d.name}\n${lines[d.answer]}`;
+    if (d.note) msg += `\n\nNote: ${d.note}`;
+    return msg;
+  }
+
+  function showThanks(d) {
+    const copy = {
+      Yes:   ["🎉", "Ho ho ho, see you there!", "Dig out that Christmas jumper (or something red) 🧶❤️"],
+      No:    ["🎁", "We'll miss you!", "Thanks for letting us know – have a very merry Christmas!"],
+      Maybe: ["🤔", "Fingers crossed!", "Please confirm your final answer by Saturday 28th November."]
+    }[d.answer];
+    $("thanks-emoji").textContent = copy[0];
+    $("thanks-title").textContent = copy[1];
+    $("thanks-text").textContent = copy[2] + " Tap below to send your RSVP to the hosts:";
+    const msg = buildMessage(d);
+    $("thanks-msg").textContent = msg;
+    $("send-wa").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    const mail = $("send-email");
+    if (RSVP_EMAIL) {
+      mail.style.display = "";
+      mail.href = `mailto:${RSVP_EMAIL}?subject=${encodeURIComponent("RSVP: Pre-Christmas Party – " + d.answer + " (" + d.name + ")")}&body=${encodeURIComponent(msg)}`;
+    } else {
+      mail.style.display = "none";
+    }
+    form.style.display = "none";
+    thanks.classList.add("show");
+    if (d.answer === "Yes") burst();
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("name").value.trim();
+    const choice = form.querySelector("input[name=answer]:checked");
+    if (!name) { err.textContent = "Please tell us your name 🎅"; $("name").focus(); return; }
+    if (!choice) { err.textContent = "Please choose Yes, No or Maybe 🎄"; return; }
+    const d = { name, answer: choice.value, note: $("note").value.trim() };
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (_) {}
+    showThanks(d);
+  });
+
+  $("copy-btn").addEventListener("click", async () => {
+    const btn = $("copy-btn");
+    try { await navigator.clipboard.writeText($("thanks-msg").textContent); btn.textContent = "Copied! ✅"; }
+    catch (_) { btn.textContent = "Select & copy the text above"; }
+    setTimeout(() => (btn.textContent = "Copy message 📋"), 2000);
+  });
+
+  $("change").addEventListener("click", () => {
+    thanks.classList.remove("show");
+    form.style.display = "";
+  });
+
+  // Pre-fill a previous answer on this device
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved) {
+      $("name").value = saved.name || "";
+      $("note").value = saved.note || "";
+      const r = form.querySelector(`input[name=answer][value="${saved.answer}"]`);
+      if (r) { r.checked = true; maybeNote.classList.toggle("show", saved.answer === "Maybe"); }
+    }
+  } catch (_) {}
+
+  // Little confetti burst for a "Yes"
+  function burst() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const items = ["🎄", "⭐", "❄️", "🎁", "🔔", "❤️", "🎅"];
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement("span");
+      s.textContent = items[i % items.length];
+      s.style.cssText = `position:fixed;left:50%;top:50%;font-size:${20 + Math.random() * 18}px;z-index:9;pointer-events:none;transition:transform 1.4s cubic-bezier(.2,.8,.3,1),opacity 1.4s;`;
+      document.body.appendChild(s);
+      const a = Math.random() * Math.PI * 2, dist = 120 + Math.random() * 260;
+      requestAnimationFrame(() => {
+        s.style.transform = `translate(${Math.cos(a) * dist}px, ${Math.sin(a) * dist}px) rotate(${Math.random() * 720 - 360}deg)`;
+        s.style.opacity = "0";
+      });
+      setTimeout(() => s.remove(), 1500);
+    }
+  }
+})();
+</script>
+</body>
+</html>
