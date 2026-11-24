@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RSVP Guest List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pine: #0f2a22; --pine-2: #17392e; --cream: #f8f3ea; --paper: #fffdf8;
+    --gold: #c3a061; --gold-soft: #e3d2ad; --burgundy: #7d1d2c;
+    --ink: #1f1b17; --muted: #6d655a; --line: #e6dccb;
+    --yes: #1f5e46; --maybe: #9a7420; --no: #7d1d2c;
+    --serif: "Cormorant Garamond", Georgia, serif; --sans: "Jost", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--cream); }
+  body { margin: 0; font-family: var(--sans); font-weight: 300; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
+  header.top { background: linear-gradient(180deg, var(--pine-2), var(--pine)); color: var(--cream); padding: 32px 16px 28px; text-align: center; }
+  header.top .eyebrow { font-size: 11px; letter-spacing: .36em; text-transform: uppercase; color: var(--gold); margin: 0; }
+  header.top h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 7vw, 48px); margin: 6px 0 4px; }
+  header.top h1 em { color: var(--gold-soft); }
+  header.top p { margin: 0; color: rgba(248,243,234,.7); font-size: 14px; }
+  header.top a { color: var(--gold-soft); }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px; }
+
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 24px; }
+  .label { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+  input[type=password], input[type=search] {
+    width: 100%; font: inherit; font-weight: 400; font-size: 16px; padding: 12px 2px; color: var(--ink);
+    border: 0; border-bottom: 1px solid #cfc3ad; background: transparent; border-radius: 0;
+  }
+  input:focus { outline: none; border-bottom-color: var(--pine); box-shadow: 0 1px 0 var(--pine); }
+  .btn { font: inherit; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; padding: 12px 18px; border-radius: 2px; cursor: pointer; border: 1px solid var(--pine); background: var(--pine); color: var(--cream); }
+  .btn.ghost { background: transparent; color: var(--pine); }
+  .btn:hover { opacity: .9; }
+  .btn[disabled] { opacity: .5; cursor: wait; }
+
+  #login { max-width: 420px; margin: 24px auto; text-align: center; }
+  #login h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; margin: 0 0 6px; color: var(--pine); }
+  #login p { color: var(--muted); margin: 0 0 18px; }
+  #login form { display: flex; flex-direction: column; gap: 16px; }
+  .msg { color: var(--burgundy); font-size: 14px; min-height: 1.3em; margin-top: 10px; }
+
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 18px 16px; }
+  .stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1; margin-top: 8px; font-variant-numeric: lining-nums; }
+  .stat.headline { background: var(--pine); border-color: var(--pine); color: var(--cream); }
+  .stat.headline .label { color: var(--gold-soft); }
+  .stat .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .stat.headline .sub { color: rgba(248,243,234,.65); }
+  .stat.yes b { color: var(--yes); } .stat.maybe b { color: var(--maybe); } .stat.no b { color: var(--no); }
+
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 28px 0 14px; }
+  .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tab { font: inherit; font-size: 13px; padding: 8px 14px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; cursor: pointer; }
+  .tab[aria-pressed=true] { background: var(--pine); color: var(--cream); border-color: var(--pine); }
+  .toolbar .search { flex: 1; min-width: 180px; }
+  .toolbar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  th { text-align: left; font-weight: 400; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); padding: 14px 16px; border-bottom: 1px solid var(--line); background: #fbf7ef; }
+  td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 15px; }
+  tr:last-child td { border-bottom: 0; }
+  td.name { font-weight: 500; }
+  td.num { font-variant-numeric: tabular-nums; }
+  td.note { color: var(--muted); max-width: 320px; white-space: pre-wrap; word-break: break-word; }
+  td.when { color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: .06em; padding: 3px 10px; border-radius: 999px; }
+  .pill.Yes { background: #e2efe8; color: var(--yes); }
+  .pill.Maybe { background: #f5ecd6; color: var(--maybe); }
+  .pill.No { background: #f3e1e3; color: var(--no); }
+  .overdue { display: block; font-size: 11px; color: var(--burgundy); margin-top: 4px; }
+  .empty { text-align: center; color: var(--muted); padding: 40px 16px; font-family: var(--serif); font-style: italic; font-size: 20px; }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .linkish { background: none; border: 0; font: inherit; color: var(--burgundy); text-decoration: underline; cursor: pointer; padding: 0; }
+
+  .invite { margin-top: 32px; }
+  .invite h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 0 0 4px; color: var(--pine); }
+  .invite p.help { color: var(--muted); margin: 0 0 14px; font-size: 14px; }
+  .invite pre { white-space: pre-wrap; font-family: var(--sans); font-size: 15px; line-height: 1.6; margin: 0 0 14px; padding: 18px; background: #fbf7ef; border-left: 2px solid var(--gold); }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat.headline { grid-column: 1 / -1; }
+    table, thead, tbody, tr, td { display: block; }
+    thead { display: none; }
+    table { border: 0; background: transparent; }
+    tr { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; margin-bottom: 10px; padding: 6px 0; }
+    td { border: 0; padding: 6px 16px; }
+    td[data-k]::before { content: attr(data-k); display: block; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    td.name::before { display: none; }
+    td.name { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <p class="eyebrow">Hosts only</p>
+  <h1>Pre-<em>Christmas</em> Party · Guest List</h1>
+  <p>Saturday 5th December, from 5 pm · <a href="./">View the invitation</a></p>
+</header>
+
+<main>
+  <section id="login" class="panel">
+    <h2>Welcome, hosts</h2>
+    <p>Enter your passcode to see who is coming.</p>
+    <form id="login-form">
+      <input type="password" id="pass" placeholder="Passcode" autocomplete="current-password" aria-label="Passcode">
+      <button class="btn" type="submit" id="login-btn">View replies</button>
+    </form>
+    <div class="msg" id="login-msg" role="alert"></div>
+  </section>
+
+  <section id="dash" class="hidden">
+    <div class="stats">
+      <div class="stat headline"><div class="label">Expected guests</div><b id="s-people">0</b><div class="sub" id="s-people-sub">from “Yes” replies</div></div>
+      <div class="stat yes"><div class="label">Yes</div><b id="s-yes">0</b><div class="sub">replies</div></div>
+      <div class="stat maybe"><div class="label">Maybe</div><b id="s-maybe">0</b><div class="sub" id="s-maybe-sub">replies</div></div>
+      <div class="stat no"><div class="label">No</div><b id="s-no">0</b><div class="sub">replies</div></div>
+      <div class="stat"><div class="label">Total replies</div><b id="s-total">0</b><div class="sub">&nbsp;</div></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="tabs" role="group" aria-label="Filter by reply">
+        <button class="tab" data-f="All" aria-pressed="true">All</button>
+        <button class="tab" data-f="Yes" aria-pressed="false">Yes</button>
+        <button class="tab" data-f="Maybe" aria-pressed="false">Maybe</button>
+        <button class="tab" data-f="No" aria-pressed="false">No</button>
+      </div>
+      <div class="search"><input type="search" id="q" placeholder="Search names or notes" aria-label="Search"></div>
+      <div class="actions">
+        <button class="btn ghost" id="refresh">Refresh</button>
+        <button class="btn ghost" id="csv">Export CSV</button>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Name</th><th>Reply</th><th>Guests</th><th>Note</th><th>Last updated</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty hidden" id="empty">No replies yet, but the invitations are out.</div>
+    <div class="meta"><span id="updated-at"></span><button class="linkish" id="logout">Sign out</button></div>
+
+    <section class="invite panel">
+      <h2>Invitation message</h2>
+      <p class="help">Copy this and send it on WhatsApp, by text or by email.</p>
+      <pre id="invite-text"></pre>
+      <button class="btn" id="copy-invite">Copy message</button>
+    </section>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script>
+const ENDPOINT = (window.PARTY_CONFIG && window.PARTY_CONFIG.RSVP_ENDPOINT) || "";
+const MAYBE_DEADLINE = new Date(2026, 10, 28, 23, 59, 59); // Sat 28 Nov
+const KEY = "xmas-party-host-pass";
+const $ = id => document.getElementById(id);
+let all = [], filter = "All";
+
+const inviteUrl = new URL("./", location.href).href;
+$("invite-text").textContent =
+`You're invited! 🎄
+
+Please join us for our Pre-Christmas Party on Saturday 5th December from 5 pm, for an evening of good company, festive drinks and seasonal cheer.
+
+Dress code: your finest Christmas jumper, or a touch of red.
+
+Kindly RSVP here: ${inviteUrl}
+
+Not sure yet? Choose "Maybe" and please confirm by Saturday 28th November.
+
+We'd love to celebrate with you!`;
+
+$("copy-invite").addEventListener("click", async () => {
+  const b = $("copy-invite");
+  try { await navigator.clipboard.writeText($("invite-text").textContent); b.textContent = "Copied"; }
+  catch (_) { b.textContent = "Select the text above to copy"; }
+  setTimeout(() => (b.textContent = "Copy message"), 2000);
+});
+
+function getPass() { try { return sessionStorage.getItem(KEY) || localStorage.getItem(KEY) || ""; } catch (_) { return ""; } }
+function setPass(p) { try { localStorage.setItem(KEY, p); } catch (_) {} }
+function clearPass() { try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch (_) {} }
+
+async function load(pass) {
+  if (!ENDPOINT) throw new Error("not-configured");
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 15000);
+  try {
+    const res = await fetch(ENDPOINT + "?key=" + encodeURIComponent(pass), { signal: ctrl.signal });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.error || "failed");
+    return out.rsvps || [];
+  } finally { clearTimeout(t); }
+}
+
+function fmt(d) {
+  const x = new Date(d);
+  if (isNaN(x)) return "";
+  return x.toLocaleString(undefined, { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
+}
+
+function render() {
+  const yes = all.filter(r => r.response === "Yes"), maybe = all.filter(r => r.response === "Maybe"), no = all.filter(r => r.response === "No");
+  const people = yes.reduce((n, r) => n + (Number(r.guests) || 1), 0);
+  const maybePeople = maybe.reduce((n, r) => n + (Number(r.guests) || 1), 0);
+  $("s-people").textContent = people;
+  $("s-people-sub").textContent = maybePeople ? `+ up to ${maybePeople} from “Maybe”` : "from “Yes” replies";
+  $("s-yes").textContent = yes.length;
+  $("s-maybe").textContent = maybe.length;
+  $("s-maybe-sub").textContent = maybe.length && Date.now() > MAYBE_DEADLINE ? "past 28th Nov deadline" : "to confirm by 28th Nov";
+  $("s-no").textContent = no.length;
+  $("s-total").textContent = all.length;
+
+  const q = $("q").value.trim().toLowerCase();
+  const list = all
+    .filter(r => filter === "All" || r.response === filter)
+    .filter(r => !q || String(r.name).toLowerCase().includes(q) || String(r.message).toLowerCase().includes(q))
+    .sort((a, b) => new Date(b.updated) - new Date(a.updated));
+
+  const tbody = $("rows");
+  tbody.replaceChildren();
+  for (const r of list) {
+    const tr = document.createElement("tr");
+    const cell = (cls, k, text) => { const td = document.createElement("td"); td.className = cls; if (k) td.dataset.k = k; if (text != null) td.textContent = text; tr.appendChild(td); return td; };
+    cell("name", "Name", r.name);
+    const rc = cell("", "Reply");
+    const pill = document.createElement("span");
+    pill.className = "pill " + (["Yes", "Maybe", "No"].includes(r.response) ? r.response : "");
+    pill.textContent = r.response;
+    rc.appendChild(pill);
+    if (r.response === "Maybe" && Date.now() > MAYBE_DEADLINE) {
+      const o = document.createElement("span"); o.className = "overdue"; o.textContent = "Awaiting confirmation"; rc.appendChild(o);
+    }
+    cell("num", "Guests", r.response === "No" ? "–" : String(r.guests || 1));
+    cell("note", "Note", r.message || "–");
+    cell("when", "Last updated", fmt(r.updated));
+    tbody.appendChild(tr);
+  }
+  $("empty").classList.toggle("hidden", list.length > 0);
+  $("empty").textContent = all.length ? "No replies match this filter." : "No replies yet, but the invitations are out.";
+  $("updated-at").textContent = "Refreshed " + new Date().toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
+async function open(pass, fromForm) {
+  const btn = $("login-btn"), msg = $("login-msg");
+  msg.textContent = ""; btn.disabled = true; btn.textContent = "Checking…";
+  try {
+    all = await load(pass);
+    setPass(pass);
+    $("login").classList.add("hidden");
+    $("dash").classList.remove("hidden");
+    render();
+  } catch (e) {
+    if (!fromForm) clearPass();
+    msg.textContent = e.message === "unauthorized" ? "That passcode isn't right."
+      : e.message === "not-configured" ? "The RSVP sheet isn't connected yet. Add its link to config.js."
+      : "Couldn't load replies. Please check your connection and try again.";
+  } finally { btn.disabled = false; btn.textContent = "View replies"; }
+}
+
+$("login-form").addEventListener("submit", e => { e.preventDefault(); const p = $("pass").value; if (p) open(p, true); });
+$("refresh").addEventListener("click", async () => {
+  const b = $("refresh"); b.disabled = true; b.textContent = "Refreshing…";
+  try { all = await load(getPass()); render(); } catch (_) { $("updated-at").textContent = "Couldn't refresh. Try again."; }
+  finally { b.disabled = false; b.textContent = "Refresh"; }
+});
+$("logout").addEventListener("click", () => { clearPass(); all = []; $("dash").classList.add("hidden"); $("login").classList.remove("hidden"); $("pass").value = ""; });
+$("q").addEventListener("input", render);
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  filter = t.dataset.f;
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-pressed", String(x === t)));
+  render();
+}));
+$("csv").addEventListener("click", () => {
+  const esc = v => { let s = String(v == null ? "" : v); if (/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
+  const lines = [["Name", "Reply", "Guests", "Note", "Last updated"].map(esc).join(",")]
+    .concat(all.map(r => [r.name, r.response, r.response === "No" ? 0 : r.guests, r.message, fmt(r.updated)].map(esc).join(",")));
+  const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "christmas-party-rsvps.csv";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+
+const saved = getPass();
+if (saved) open(saved, false);
+</script>
+</body>
+</html>
