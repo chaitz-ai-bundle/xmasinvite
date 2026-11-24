@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pine: #0f2a22; --pine-2: #17392e; --cream: #f8f3ea; --paper: #fffdf8;
+    --wine: #5a0c18; --wine-2: #8e1628; --cream: #f8f3ea; --paper: #fffdf8;
     --gold: #c3a061; --gold-soft: #e3d2ad; --burgundy: #7d1d2c;
     --ink: #1f1b17; --muted: #6d655a; --line: #e6dccb;
     --yes: #1f5e46; --maybe: #9a7420; --no: #7d1d2c;
@@ -19,7 +19,7 @@
   * { box-sizing: border-box; }
   html { background: var(--cream); }
   body { margin: 0; font-family: var(--sans); font-weight: 300; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
-  header.top { background: linear-gradient(180deg, var(--pine-2), var(--pine)); color: var(--cream); padding: 32px 16px 28px; text-align: center; }
+  header.top { background: linear-gradient(180deg, var(--wine-2), var(--wine)); color: var(--cream); padding: 32px 16px 28px; text-align: center; }
   header.top .eyebrow { font-size: 11px; letter-spacing: .36em; text-transform: uppercase; color: var(--gold); margin: 0; }
   header.top h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 7vw, 48px); margin: 6px 0 4px; }
   header.top h1 em { color: var(--gold-soft); }
@@ -33,14 +33,14 @@
     width: 100%; font: inherit; font-weight: 400; font-size: 16px; padding: 12px 2px; color: var(--ink);
     border: 0; border-bottom: 1px solid #cfc3ad; background: transparent; border-radius: 0;
   }
-  input:focus { outline: none; border-bottom-color: var(--pine); box-shadow: 0 1px 0 var(--pine); }
-  .btn { font: inherit; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; padding: 12px 18px; border-radius: 2px; cursor: pointer; border: 1px solid var(--pine); background: var(--pine); color: var(--cream); }
-  .btn.ghost { background: transparent; color: var(--pine); }
+  input:focus { outline: none; border-bottom-color: var(--wine); box-shadow: 0 1px 0 var(--wine); }
+  .btn { font: inherit; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; padding: 12px 18px; border-radius: 2px; cursor: pointer; border: 1px solid var(--wine); background: var(--wine); color: var(--cream); }
+  .btn.ghost { background: transparent; color: var(--wine); }
   .btn:hover { opacity: .9; }
   .btn[disabled] { opacity: .5; cursor: wait; }
 
   #login { max-width: 420px; margin: 24px auto; text-align: center; }
-  #login h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; margin: 0 0 6px; color: var(--pine); }
+  #login h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; margin: 0 0 6px; color: var(--wine); }
   #login p { color: var(--muted); margin: 0 0 18px; }
   #login form { display: flex; flex-direction: column; gap: 16px; }
   .msg { color: var(--burgundy); font-size: 14px; min-height: 1.3em; margin-top: 10px; }
@@ -48,7 +48,7 @@
   .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 18px 16px; }
   .stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1; margin-top: 8px; font-variant-numeric: lining-nums; }
-  .stat.headline { background: var(--pine); border-color: var(--pine); color: var(--cream); }
+  .stat.headline { background: var(--wine); border-color: var(--wine); color: var(--cream); }
   .stat.headline .label { color: var(--gold-soft); }
   .stat .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
   .stat.headline .sub { color: rgba(248,243,234,.65); }
@@ -57,7 +57,7 @@
   .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 28px 0 14px; }
   .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
   .tab { font: inherit; font-size: 13px; padding: 8px 14px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; cursor: pointer; }
-  .tab[aria-pressed=true] { background: var(--pine); color: var(--cream); border-color: var(--pine); }
+  .tab[aria-pressed=true] { background: var(--wine); color: var(--cream); border-color: var(--wine); }
   .toolbar .search { flex: 1; min-width: 180px; }
   .toolbar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -79,7 +79,7 @@
   .linkish { background: none; border: 0; font: inherit; color: var(--burgundy); text-decoration: underline; cursor: pointer; padding: 0; }
 
   .invite { margin-top: 32px; }
-  .invite h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 0 0 4px; color: var(--pine); }
+  .invite h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; margin: 0 0 4px; color: var(--wine); }
   .invite p.help { color: var(--muted); margin: 0 0 14px; font-size: 14px; }
   .invite pre { white-space: pre-wrap; font-family: var(--sans); font-size: 15px; line-height: 1.6; margin: 0 0 14px; padding: 18px; background: #fbf7ef; border-left: 2px solid var(--gold); }
 
