@@ -6,7 +6,7 @@ Replace `<link>` with your invitation link.
 
 You're invited! 🎄
 
-Please join us for our Pre-Christmas Party on **Saturday 5th December from 5 pm**, for an evening of good company, festive drinks and seasonal cheer.
+Please join us for our Pre-Christmas Party on **Saturday 5th December from 5 pm** at **Flat 253, Haleworks Apartment, N17 9LS**, for an evening of good company, festive drinks and seasonal cheer.
 
 Dress code: your finest Christmas jumper, or a touch of red.
 
@@ -22,7 +22,7 @@ We'd love to celebrate with you!
 
 Dear friends,
 
-As the festive season approaches, we would be delighted if you could join us for our Pre-Christmas Party on Saturday 5th December, from 5 pm.
+As the festive season approaches, we would be delighted if you could join us for our Pre-Christmas Party on Saturday 5th December, from 5 pm, at Flat 253, Haleworks Apartment, London N17 9LS.
 
 Expect good company, festive drinks and plenty of seasonal cheer as we welcome in the Christmas season together.
 
